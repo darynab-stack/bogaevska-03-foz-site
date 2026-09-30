@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class ExchangeProgram(models.Model):
@@ -16,3 +17,11 @@ class ExchangeProgram(models.Model):
 
     def __str__(self):
         return self.university
+
+    @property
+    def is_open(self):
+        return self.deadline >= timezone.localdate()
+
+    @property
+    def status(self):
+        return "Прийом триває" if self.is_open else "Прийом завершено"
