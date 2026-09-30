@@ -1,11 +1,16 @@
 from django.shortcuts import get_object_or_404, render
 
-from .models import Department, FacultyInfo, Program
+from .models import Department, FacultyInfo, Program, Teacher
 
 
 def home(request):
-    faculty = FacultyInfo.objects.first()
-    return render(request, "faculty/home.html", {"faculty": faculty})
+    context = {
+        "faculty": FacultyInfo.objects.first(),
+        "department_count": Department.objects.count(),
+        "program_count": Program.objects.count(),
+        "teacher_count": Teacher.objects.count(),
+    }
+    return render(request, "faculty/home.html", context)
 
 
 def program_list(request):
