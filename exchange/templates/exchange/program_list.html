@@ -1,0 +1,41 @@
+{% extends "faculty/base.html" %}
+{% block title %}Академічний обмін — ФОЗ НаУКМА{% endblock %}
+{% block content %}
+  <h1>Програми академічного обміну</h1>
+  <form class="filter" method="get">
+    <label for="country">Країна:</label>
+    <select id="country" name="country" onchange="this.form.submit()">
+      <option value="">Усі країни</option>
+      {% for country in countries %}
+        <option value="{{ country }}"
+                {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
+      {% endfor %}
+    </select>
+    <noscript>
+      <button type="submit">Показати</button>
+    </noscript>
+  </form>
+  <div class="grid">
+    {% for program in programs %}
+      <article class="card">
+        <p class="code">{{ program.country }}</p>
+        <h2>{{ program.university }}</h2>
+        <p>{{ program.description }}</p>
+        <ul class="info-list">
+          <li>
+            <span>Мови навчання:</span> {{ program.languages }}
+          </li>
+          <li>
+            <span>Кількість місць:</span> {{ program.places }}
+          </li>
+          <li>
+            <span>Дедлайн:</span> {{ program.deadline|date:"d.m.Y" }}
+          </li>
+        </ul>
+        <p class="status {% if program.is_open %}status-open{% else %}status-closed{% endif %}">{{ program.status }}</p>
+      </article>
+    {% empty %}
+      <p class="empty">Програм обміну не знайдено.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

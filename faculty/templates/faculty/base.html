@@ -19,6 +19,8 @@
                {% if "department" in current %}class="active"{% endif %}>Кафедри</a>
             <a href="{% url 'faculty:program_list' %}"
                {% if "program" in current and request.resolver_match.app_name == "faculty" %}class="active"{% endif %}>Спеціальності</a>
+            <a href="{% url 'exchange:program_list' %}"
+               {% if request.resolver_match.app_name == "exchange" %}class="active"{% endif %}>Обмін</a>
           </nav>
         </div>
       </header>
