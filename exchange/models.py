@@ -3,6 +3,7 @@ from django.db import models
 
 class ExchangeProgram(models.Model):
     university = models.CharField("університет", max_length=200)
+    country = models.CharField("країна", max_length=100, default="")
     languages = models.CharField("мови навчання", max_length=200)
     places = models.CharField("кількість місць", max_length=50)
     deadline = models.DateField("дедлайн подачі")

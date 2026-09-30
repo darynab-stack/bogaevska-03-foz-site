@@ -5,5 +5,6 @@ from .models import ExchangeProgram
 
 @admin.register(ExchangeProgram)
 class ExchangeProgramAdmin(admin.ModelAdmin):
-    list_display = ["university", "languages", "places", "deadline"]
-    search_fields = ["university"]
+    list_display = ["university", "country", "languages", "places", "deadline"]
+    list_filter = ["country"]
+    search_fields = ["university", "country"]
