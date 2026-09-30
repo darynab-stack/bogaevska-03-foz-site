@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ФОЗ НаУКМА{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'faculty/style.css' %}">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="{% url 'faculty:home' %}">ФОЗ НаУКМА</a>
+        <nav class="nav">
+          <a href="{% url 'faculty:home' %}">Головна</a>
+          <a href="{% url 'faculty:department_list' %}">Кафедри</a>
+          <a href="{% url 'faculty:program_list' %}">Спеціальності</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+      <div class="container">Факультет охорони здоров'я, соціальної роботи та психології НаУКМА</div>
+    </footer>
+  </body>
+</html>

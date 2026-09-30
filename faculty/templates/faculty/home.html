@@ -1,0 +1,30 @@
+{% extends "faculty/base.html" %}
+{% block content %}
+  {% if faculty %}
+    <section class="hero">
+      <h1>{{ faculty.name }}</h1>
+      <p>{{ faculty.description|linebreaksbr }}</p>
+    </section>
+    <section class="card">
+      <h2>Контакти</h2>
+      <ul class="info-list">
+        <li>
+          <span>Декан:</span> {{ faculty.dean }}
+        </li>
+        <li>
+          <span>Адреса:</span> {{ faculty.address }}
+        </li>
+        <li>
+          <span>Телефон:</span> {{ faculty.phone }}
+        </li>
+        {% if faculty.email %}
+          <li>
+            <span>Пошта:</span> <a href="mailto:{{ faculty.email }}">{{ faculty.email }}</a>
+          </li>
+        {% endif %}
+      </ul>
+    </section>
+  {% else %}
+    <p class="empty">Інформацію про факультет ще не додано.</p>
+  {% endif %}
+{% endblock %}

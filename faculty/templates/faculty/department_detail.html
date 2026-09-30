@@ -1,0 +1,43 @@
+{% extends "faculty/base.html" %}
+{% block title %}{{ department.name }} — ФОЗ НаУКМА{% endblock %}
+{% block content %}
+  <h1>{{ department.name }}</h1>
+  <section class="card">
+    <p class="meta">Завідувач кафедри: {{ department.head }}</p>
+    <h2>Випускова для спеціальностей</h2>
+    <ul>
+      {% for program in department.programs.all %}
+        <li>
+          <a href="{% url 'faculty:program_detail' program.pk %}">{{ program.code }} {{ program.name }}</a>
+        </li>
+      {% empty %}
+        <li>немає</li>
+      {% endfor %}
+    </ul>
+  </section>
+  <section class="card">
+    <h2>Викладачі</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Ім'я</th>
+          <th>Посада</th>
+          <th>Науковий ступінь</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for teacher in department.teachers.all %}
+          <tr>
+            <td>{{ teacher.name }}</td>
+            <td>{{ teacher.position }}</td>
+            <td>{{ teacher.degree|default:"—" }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3">Викладачів ще не додано.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}
