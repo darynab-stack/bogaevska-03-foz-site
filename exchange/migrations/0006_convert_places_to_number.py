@@ -1,3 +1,10 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+Takes the first number from the text number of places ("до 4" -> 4)
+and stores it in a temporary numeric field.
+"""
 import re
 
 from django.db import migrations

@@ -1,3 +1,11 @@
+"""
+Created on 29/09/2026
+Created by Daryna Bogaevska
+
+Admin panel settings for the faculty models: list columns, filters and search.
+Teachers can be added directly on the department page.
+"""
+
 from django.contrib import admin
 
 from .models import Department, FacultyInfo, Program, Teacher

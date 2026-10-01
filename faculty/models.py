@@ -1,3 +1,11 @@
+"""
+Created on 29/09/2026
+Created by Daryna Bogaevska
+
+Database models for the faculty: general faculty info for the home page,
+departments, study programs and teachers.
+"""
+
 from django.db import models
 
 

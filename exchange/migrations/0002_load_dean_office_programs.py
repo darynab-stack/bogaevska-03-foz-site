@@ -1,3 +1,10 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+Loads the dean's office exchange programs as is, using RunSQL.
+Rolling back deletes these programs.
+"""
 from django.db import migrations
 
 LOAD_PROGRAMS_SQL = """

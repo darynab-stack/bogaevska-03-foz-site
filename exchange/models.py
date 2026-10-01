@@ -1,3 +1,11 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+Exchange program model. The admission status is calculated from the deadline
+instead of being stored in the database.
+"""
+
 from django.db import models
 from django.utils import timezone
 

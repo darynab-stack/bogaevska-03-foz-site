@@ -1,3 +1,10 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+Splits "university, country" into two separate fields using RunPython.
+Rolling back joins them again with a comma.
+"""
 from django.db import migrations
 
 

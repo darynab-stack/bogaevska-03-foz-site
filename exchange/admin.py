@@ -1,3 +1,11 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+Admin panel settings for exchange programs: list columns, country filter,
+search and an "admission open" indicator.
+"""
+
 from django.contrib import admin
 
 from .models import ExchangeProgram

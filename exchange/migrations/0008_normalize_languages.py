@@ -1,3 +1,10 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+Makes language names consistent ("English" -> "англійська").
+Rolling back restores the original values of the dean's office programs.
+"""
 from django.db import migrations
 
 LANGUAGE_NAMES = {

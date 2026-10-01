@@ -1,3 +1,10 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+URL routes for the home, study program and department pages.
+"""
+
 from django.urls import path
 
 from . import views

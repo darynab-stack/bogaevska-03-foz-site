@@ -1,3 +1,10 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+Removes the old text field for the number of places
+and renames the numeric field to places.
+"""
 from django.db import migrations, models
 
 

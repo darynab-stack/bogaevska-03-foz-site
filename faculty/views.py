@@ -1,3 +1,11 @@
+"""
+Created on 30/09/2026
+Created by Daryna Bogaevska
+
+Views that load faculty data from the database and render the home,
+study program and department pages.
+"""
+
 from django.shortcuts import get_object_or_404, render
 
 from .models import Department, FacultyInfo, Program, Teacher
