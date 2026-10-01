@@ -1,7 +1,73 @@
-# web-programming-2026-template
+# Faculty of Health, Social Work and Psychology — NaUKMA website
 
-A reusable Django project with no bundled application, SQLite, and Django's
-standard admin, authentication, sessions, messages, and staticfiles support.
+Web programming lab 3. A Django website for a NaUKMA faculty that does not
+have its own site: a home page, study programs, departments with teachers,
+and an academic exchange section.
+
+## Quick start
+
+```bash
+python -m pip install -r requirements-dev.txt
+python manage.py migrate
+python manage.py loaddata foz_content
+python manage.py runserver
+```
+
+- `migrate` creates the tables and already adds the 6 exchange programs
+  from the dean's office table;
+- `loaddata foz_content` loads the faculty content: 4 departments,
+  7 study programs, 36 teachers and the home page text.
+
+| Page | URL |
+| --- | --- |
+| Home | `/` |
+| Study programs | `/programs/`, `/programs/<id>/` |
+| Departments | `/departments/`, `/departments/<id>/` |
+| Academic exchange | `/exchange/` (with a country filter) |
+| Admin | `/admin/` |
+
+Answers to the questions from part 2 are in [ANSWERS.md](ANSWERS.md).
+
+## Why this faculty
+
+The Faculty of Health, Social Work and Psychology (FOZ) is the youngest
+faculty of NaUKMA, founded in 2023. On the "Faculties" page of the main
+university website, separate websites are listed only for the Faculty of
+Informatics, the Faculty of Law and the kmbs Business School. FOZ has no
+website of its own.
+
+## Analysis of existing information about FOZ
+
+Information about the faculty exists, but it is scattered and partly
+contradictory:
+
+1. **Two different faculty pages.** The new page on `web.ukma.edu.ua` names
+   the dean and 4 structural units, but has no department heads and no
+   program codes. The old page on `www.ukma.edu.ua` is still placed in the
+   section of *another* faculty (Social Sciences), lists only 3 units and no
+   dean, but does have department heads and the old program codes
+   (053, 229, 231).
+2. **Programs and codes live on a separate site.** Current codes from the
+   new list of specialties (C4, I10, I9, D3), program descriptions and
+   courses exist only in the NaUKMA ECTS catalogue, which is hard to reach
+   from the faculty page.
+3. **Teachers are listed in different places and formats.** The Department
+   of Psychology and the School of Health Care Management show positions and
+   degrees; the School of Social Work keeps its list on its own website; the
+   School of Public Health shows only names.
+4. **Contacts are hard to get.** Email addresses on the pages are hidden
+   behind JavaScript, and admission coordinators are not listed anywhere.
+5. **No information about academic exchange** for the faculty's students.
+
+**What this website does:** it collects everything in one place with a
+consistent structure. Every study program has a code, description, courses,
+admission coordinator and contact; every department has a head, programs and
+teachers; a separate section lists exchange programs with their admission
+status.
+
+**What is still missing and could be added next:** a page for applicants
+(dates, requirements, tuition), faculty news, and a separate page for the
+Medical
 
 ## Local setup
 

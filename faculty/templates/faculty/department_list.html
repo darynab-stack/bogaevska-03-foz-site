@@ -1,0 +1,27 @@
+{% extends "faculty/base.html" %}
+{% block title %}Кафедри — ФОЗ НаУКМА{% endblock %}
+{% block content %}
+  <h1>Кафедри</h1>
+  <div class="grid">
+    {% for department in departments %}
+      <article class="card">
+        <h2>
+          <a href="{% url 'faculty:department_detail' department.pk %}">{{ department.name }}</a>
+        </h2>
+        <p class="meta">Завідувач: {{ department.head }}</p>
+        <p>Випускова для спеціальностей:</p>
+        <ul>
+          {% for program in department.programs.all %}
+            <li>
+              <a href="{% url 'faculty:program_detail' program.pk %}">{{ program.code }} {{ program.name }}</a>
+            </li>
+          {% empty %}
+            <li>немає</li>
+          {% endfor %}
+        </ul>
+      </article>
+    {% empty %}
+      <p class="empty">Кафедр ще не додано.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

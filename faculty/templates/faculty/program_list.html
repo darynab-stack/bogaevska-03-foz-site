@@ -1,0 +1,19 @@
+{% extends "faculty/base.html" %}
+{% block title %}Спеціальності — ФОЗ НаУКМА{% endblock %}
+{% block content %}
+  <h1>Спеціальності</h1>
+  <div class="grid">
+    {% for program in programs %}
+      <article class="card">
+        <p class="code">{{ program.code }}</p>
+        <h2>
+          <a href="{% url 'faculty:program_detail' program.pk %}">{{ program.name }}</a>
+        </h2>
+        <p>{{ program.description|truncatewords:50 }}</p>
+        <p class="meta">Координатор набору: {{ program.coordinator_name }}, {{ program.coordinator_contact }}</p>
+      </article>
+    {% empty %}
+      <p class="empty">Спеціальностей ще не додано.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

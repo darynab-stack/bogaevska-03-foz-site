@@ -1,0 +1,31 @@
+{% extends "faculty/base.html" %}
+{% block title %}{{ program.name }} — ФОЗ НаУКМА{% endblock %}
+{% block content %}
+  <p class="code">{{ program.code }}</p>
+  <h1>{{ program.name }}</h1>
+  <section class="card">
+    <p>{{ program.description|linebreaksbr }}</p>
+    <ul class="info-list">
+      <li>
+        <span>Випускова кафедра:</span>
+        <a href="{% url 'faculty:department_detail' program.department.pk %}">{{ program.department.name }}</a>
+      </li>
+      <li>
+        <span>Координатор набору:</span> {{ program.coordinator_name }}
+      </li>
+      <li>
+        <span>Контакт:</span> {{ program.coordinator_contact }}
+      </li>
+    </ul>
+  </section>
+  <section class="card">
+    <h2>Дисципліни</h2>
+    <ul>
+      {% for discipline in program.disciplines_list %}
+        <li>{{ discipline }}</li>
+      {% empty %}
+        <li>Список дисциплін ще не додано.</li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}

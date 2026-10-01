@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ФОЗ НаУКМА{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'faculty/style.css' %}">
+  </head>
+  <body>
+    {% with current=request.resolver_match.url_name %}
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="logo" href="{% url 'faculty:home' %}">ФОЗ <span>НаУКМА</span></a>
+          <nav class="nav">
+            <a href="{% url 'faculty:home' %}"
+               {% if current == "home" %}class="active"{% endif %}>Головна</a>
+            <a href="{% url 'faculty:department_list' %}"
+               {% if "department" in current %}class="active"{% endif %}>Кафедри</a>
+            <a href="{% url 'faculty:program_list' %}"
+               {% if "program" in current and request.resolver_match.app_name == "faculty" %}class="active"{% endif %}>Спеціальності</a>
+            <a href="{% url 'exchange:program_list' %}"
+               {% if request.resolver_match.app_name == "exchange" %}class="active"{% endif %}>Обмін</a>
+          </nav>
+        </div>
+      </header>
+    {% endwith %}
+    <main class="site-main">
+      <div class="container">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p class="footer-title">Факультет охорони здоров'я, соціальної роботи та психології</p>
+        <p>Національний університет «Києво-Могилянська академія»</p>
+      </div>
+    </footer>
+  </body>
+</html>

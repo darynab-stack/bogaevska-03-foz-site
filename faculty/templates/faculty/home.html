@@ -1,0 +1,50 @@
+{% extends "faculty/base.html" %}
+{% block content %}
+  {% if faculty %}
+    <section class="hero">
+      <p class="eyebrow">НаУКМА</p>
+      <h1>{{ faculty.name }}</h1>
+      <p class="hero-text">{{ faculty.description|linebreaksbr }}</p>
+      <div class="hero-actions">
+        <a class="button" href="{% url 'faculty:program_list' %}">Спеціальності</a>
+        <a class="button button-light"
+           href="{% url 'faculty:department_list' %}">Кафедри</a>
+      </div>
+    </section>
+    <section class="stats">
+      <a class="stat" href="{% url 'faculty:department_list' %}">
+        <span class="stat-number">{{ department_count }}</span>
+        <span class="stat-label">кафедр і шкіл</span>
+      </a>
+      <a class="stat" href="{% url 'faculty:program_list' %}">
+        <span class="stat-number">{{ program_count }}</span>
+        <span class="stat-label">спеціальностей</span>
+      </a>
+      <div class="stat">
+        <span class="stat-number">{{ teacher_count }}</span>
+        <span class="stat-label">викладачів</span>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Контакти</h2>
+      <ul class="info-list">
+        <li>
+          <span>Декан:</span> {{ faculty.dean }}
+        </li>
+        <li>
+          <span>Адреса:</span> {{ faculty.address }}
+        </li>
+        <li>
+          <span>Телефон:</span> {{ faculty.phone }}
+        </li>
+        {% if faculty.email %}
+          <li>
+            <span>Пошта:</span> <a href="mailto:{{ faculty.email }}">{{ faculty.email }}</a>
+          </li>
+        {% endif %}
+      </ul>
+    </section>
+  {% else %}
+    <p class="empty">Інформацію про факультет ще не додано.</p>
+  {% endif %}
+{% endblock %}
